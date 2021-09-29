@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -18,8 +19,30 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct() {
+		parent::__construct();
+
+	}
+
+	
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		//pasando datos de el controlador a la variable por parametro, el indice del array se convierte en
+		//Variable
+		$variable['prueba'] = 'Hola desde la variable prueba';
+		$this->load->view('Inicio', $variable);
+	}
+
+	public function PruebaAjax(){
+		echo 'Hola desde Ajax usando jquery';
+	}
+
+	public function Datatable(){
+		//$ReadAgente = crud::Read(query::ReadAgentes());
+        //while ($Resultado = mysqli_fetch_assoc($ReadAgente)) {
+        //    $rows["data"][] = $Resultado;
+        //}
+        //echo json_encode($rows);
 	}
 }
