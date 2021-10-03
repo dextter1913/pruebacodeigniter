@@ -32,7 +32,7 @@ let PruebaJquery = function(){
             url: "index.php/Welcome/PruebaAjax",
             data: form,
             success: function (Respuesta) {
-                
+                console.log(Respuesta);
             },
             error: function (xhr, status, error){
                 console.log(xhr);
