@@ -1,15 +1,27 @@
 $(document).ready(function () {
     console.log('Hola desde jquery');
     PruebaJquery();
-    TablaClientes();
+    //TablaClientes();
+    MostrandoJson();
 });
+
+var MostrandoJson = function () {
+    $.ajax({
+        type: "POST",
+        url: "index.php/Prueba/datatable",
+        type: "json",
+        success: function (Respuesta) {
+            console.log(Respuesta);
+        }
+    });
+}
 
 //Funcion para mostrar Datatable por Ajax
 var TablaClientes = function () {
     var table = $('#TablaClientes').DataTable({
         "ajax": {
             "method": "POST",
-            "url": "index.php/Welcome/Datatable"
+            "url": "index.php/Prueba/datatable"
         },
         "columns": [
             { "data": "IdCliente" },
@@ -29,7 +41,7 @@ let PruebaJquery = function(){
         let form = $('#frmInsertarDatos').serialize();
         $.ajax({
             type: "POST",
-            url: "index.php/Welcome/PruebaAjax",
+            url: "index.php/Prueba/insertardatos",
             data: form,
             success: function (Respuesta) {
                 console.log(Respuesta);
@@ -41,6 +53,10 @@ let PruebaJquery = function(){
             }
             
         });
+        Search:
+
+        $('#email').val('');
+        $('#identificacion').val('');
     });
 }
 
